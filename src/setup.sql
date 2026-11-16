@@ -31,11 +31,18 @@ CREATE TABLE categories (
 	  ("Community Service"),
 	  ("Health and wellness");
 
-CREATE TABLE project_categories ( 
-  categories_id INT NOT NULL,
+CREATE TABLE project_categories (
   service_project_id INT NOT NULL,
+  categories_id INT NOT NULL,
   PRIMARY KEY (service_project_id, categories_id),
-  FOREIGN KEY (categories_id) REFERENCES categories(categories_id),
-  FOREIGN KEY (service_project_id) REFERENCES service_project(service_project_id)
+  FOREIGN KEY (service_project_id) REFERENCES service_project(service_project_id),
+  FOREIGN KEY (categories_id) REFERENCES categories(categories_id)
   );
-  select * from service_project
+
+INSERT INTO project_categories(service_project_id, categories_id)VALUES
+	(1,1),
+	(1,3),
+	(2,3),
+	(2,4),
+	(3,2),
+	(3,3);
