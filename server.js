@@ -41,7 +41,7 @@ app.get('/', async (req, res) => {
             projects
         });
     } catch (error) {
-        console.error('Home page error:',error);
+        console.error('Home page error:', error);
         res.status(500).send('Error loading home page');
     }
 });
