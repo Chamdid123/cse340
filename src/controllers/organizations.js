@@ -1,15 +1,15 @@
-app.get('/organizations', async (req, res) => {
-    const title = 'Our Partner Organizations';
+import { getAllOrganizations, getOrganizationDetails } from "../models/organizations";
+import { getProjectsByOrganizationId } from "../models/projects";
 
-    try {
-        const organizations = await getAllOrganizations();
+const showOrganizationsDetailsPage = async (req, res) => {
+    const organizationId = req.params.id;
 
-        res.render('organizations', {
-            title,
-            organizations
-        });
-    } catch (error) {
-        console.error(error);
-        res.status(500).send('Error loading organizations');
-    }
-});
+    const organizations = await getAllOrganizations();
+    const title = 'organization Details';
+
+    res.render('organizations', {
+        title,
+        organizations
+    });
+};
+export { showOrganizationsPage, showOrganizationsDetailsPage };

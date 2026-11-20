@@ -1,15 +1,12 @@
-app.get('/categories', async (req, res) => {
-    const title = 'Service Project Categories';
+import { getAllCategories } from "../models/categories";
 
-    try {
-        const categories = await getAllCategories();
+const showCategoriesPage = async (req, res) => {
+    const categories = await getAllCategories();
+    const title = 'Service Categories';
 
-        res.render('categories', {
-            title,
-            categories
-        });
-    } catch (error) {
-        console.error(error);
-        res.status(500).send('Error loading categories');
-    }
-});
+    res.render('categories', {
+        title,
+        categories
+    });
+};
+export { showCategoriesPage };
